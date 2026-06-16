@@ -1,0 +1,73 @@
+==================================================================
+
+            J A K   P O U Z I V A T   C L A U D E
+
+==================================================================
+
+
+  KROK 1            Najdi na PLOSE (hlavni obrazovka) ikonu:
+
+                          +----------------+
+                          |                |
+                          |     CLAUDE     |
+                          |                |
+                          +----------------+
+
+
+  KROK 2            DVAKRAT RYCHLE po sobe na ni klikni mysi.
+                    (Otevre se cerne/bile okno - to je spravne.)
+
+
+  KROK 3            NAPIS, co potrebujes. Normalne, jako bys to
+                    rekla cloveku. Cesky.
+
+
+  KROK 4            Zmackni klavesu  E N T E R  (velka klavesa
+                    vpravo na klavesnici).
+
+
+  KROK 5            Pockej chvilku. Claude ti odpovi.
+                    Pak muzes psat dal a zase dat ENTER.
+
+
+==================================================================
+
+  CO MU MUZU NAPSAT?  (jen priklady - rikej si o cokoliv)
+
+------------------------------------------------------------------
+
+  HOTEL:
+   - "Napis zdvorilou odpoved na tuto recenzi: ..."
+   - "Preloz tento email pro hosta do anglictiny: ..."
+   - "Napis uvitaci zpravu pro hosty na pokoj."
+   - "Vymysli kratky popis naseho pokoje s vyhledem."
+
+  KAVARNA:
+   - "Napis prispevek na Instagram o dnesnim dortu."
+   - "Vymysli 10 hashtagu ke kave a snidani."
+   - "Napis kratky text na menu o nasem cappuccinu."
+   - "Vymysli napad na akci na vikend v kavarne."
+
+
+==================================================================
+
+  KDYZ SI NEVIM RADY
+
+------------------------------------------------------------------
+
+  * Napsala jsem chybu?  -> Klavesa  BACKSPACE  maze pismena.
+
+  * Nevim, jak dal?      -> NAPIS TO PRIMO CLAUDE. Treba:
+                            "Nevim jak tě používat, poradíš mi?"
+                            On ti to vysvetli.
+
+  * Nic se nedeje?       -> Zkontroluj, jestli jsi dala ENTER.
+
+  * Okno se zavrelo?     -> Vrat se na KROK 1 (dvojklik na ikonu).
+
+
+==================================================================
+
+   NEMUZES NIC ROZBIT. Klidne zkousej. Kdyz nevis, zeptej se ho.
+
+==================================================================

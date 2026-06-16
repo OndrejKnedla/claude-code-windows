@@ -1,0 +1,58 @@
+name: Bug report
+description: Installation failed or something doesn't work
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! The more exact info you give, the faster this gets fixed.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you run, and what went wrong?
+      placeholder: I pasted the one-liner and it stopped at...
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: Exact error text
+      description: Copy the full red error from PowerShell (select with mouse, Ctrl+C).
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: "Run in PowerShell: [System.Environment]::OSVersion.Version"
+      placeholder: "Windows 10, build 19045"
+    validations:
+      required: true
+  - type: input
+    id: powershell
+    attributes:
+      label: PowerShell version
+      description: "Run: $PSVersionTable.PSVersion"
+      placeholder: "5.1.19041.3803"
+    validations:
+      required: true
+  - type: dropdown
+    id: admin
+    attributes:
+      label: Did you run PowerShell as Administrator?
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Quick checks
+      options:
+        - label: I was connected to the internet
+        - label: I tried opening a brand-new PowerShell window

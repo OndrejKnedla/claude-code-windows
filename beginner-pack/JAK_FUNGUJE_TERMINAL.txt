@@ -1,0 +1,92 @@
+==================================================================
+
+        J A K   F U N G U J E   T O   C E R N E   O K N O
+                  ( t e r m i n a l )
+
+==================================================================
+
+  To cerne/bile okno, ktere se otevre, je "terminal".
+  Funguje jednoduse: NAPISES a das ENTER. Claude odpovi.
+  Nemusis na nic klikat, staci psat.
+
+
+------------------------------------------------------------------
+  ZAKLAD
+------------------------------------------------------------------
+
+  ENTER ........... odesle to, co jsi napsala (velka klavesa
+                    vpravo na klavesnici).
+
+  BACKSPACE ....... maze pismena (klavesa nad Enterem se sipkou
+                    doleva).
+
+  Sipky nahoru/dolu  vrati to, co jsi uz psala drive.
+
+
+------------------------------------------------------------------
+  JAK SKONCIT / ZAVRIT CLAUDE
+------------------------------------------------------------------
+
+  * Stiskni  CTRL + C  (drz Ctrl a k tomu zmackni C).
+    Kdyz se nic nestane, zmackni  CTRL + C  jeste jednou.
+
+  * Nebo napis  /exit  a das Enter.
+
+  * Uplne zavrit okno: klikni na krizek (X) vpravo nahore.
+
+  -> Nic tim nerozbijes. Priste zas dvojklik na ikonu CLAUDE.
+
+
+------------------------------------------------------------------
+  KOPIROVANI A VKLADANI (velmi se hodi!)
+------------------------------------------------------------------
+
+  ZKOPIROVAT text (treba z webu nebo emailu):
+     1) Oznac text mysi (drz leve tlacitko a tahni pres text).
+     2) Stiskni  CTRL + C.
+        (Nekdy funguje i PRAVE tlacitko mysi = zkopiruje.)
+
+  VLOZIT text do okna Claude:
+     * Stiskni  CTRL + V
+       NEBO
+     * klikni PRAVYM tlacitkem mysi v okne (vlozi to samo).
+
+  Takze: zkopiruj si kdekoli text (Ctrl+C), klikni do okna
+  Claude a dej Ctrl+V (nebo prave tlacitko). Pak Enter.
+
+
+------------------------------------------------------------------
+  FOTKY A OBRAZKY  (Claude je umi videt!)
+------------------------------------------------------------------
+
+  Chces, aby Claude videl fotku? Jednoduse ji do okna PRETAHNI:
+
+     1) Najdi fotku na plose nebo ve slozce.
+     2) Chyt ji mysi (drz leve tlacitko) a pretahni ji
+        primo do cerneho okna Claude. Pust tlacitko.
+     3) V okne se objevi cesta k fotce. Das Enter.
+
+  Pak muzes napsat treba:
+     "Popis, co je na tehle fotce."
+     "Napis prispevek na Instagram k tehle fotce dortu."
+
+
+------------------------------------------------------------------
+  ODKAZY (linky na web)
+------------------------------------------------------------------
+
+  Mas nekde odkaz (zacina na http... nebo www...)?
+     1) Zkopiruj ho (Ctrl+C).
+     2) Vloz do okna Claude (Ctrl+V nebo prave tlacitko).
+     3) Enter a napis, co s nim ma Claude udelat. Treba:
+        "Shrn mi, co je na tehle strance."
+
+
+==================================================================
+
+  KDYZ SI NEVIS RADY, NAPIS TO PRIMO CLAUDE.
+  Treba: "Nevim jak te ovladat, vysvetli mi to jednoduse."
+
+  NEMUZES NIC ROZBIT. Klidne zkousej.
+
+==================================================================

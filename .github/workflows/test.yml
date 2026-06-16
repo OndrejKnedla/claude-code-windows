@@ -1,0 +1,114 @@
+name: test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1) Static analysis - real PowerShell syntax + lint check on a Windows runner
+  # ---------------------------------------------------------------------------
+  lint:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse install.ps1 for syntax errors
+        shell: pwsh
+        run: |
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile(
+            (Resolve-Path .\install.ps1), [ref]$null, [ref]$errors) | Out-Null
+          if ($errors) {
+            $errors | ForEach-Object { Write-Host "::error::$($_.Message)" }
+            exit 1
+          }
+          Write-Host "No syntax errors."
+
+      - name: PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          if (-not (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue)) {
+            Register-PSRepository -Default -ErrorAction SilentlyContinue
+          }
+          Set-PSRepository PSGallery -InstallationPolicy Trusted -ErrorAction SilentlyContinue
+          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser -AllowClobber
+          $issues = Invoke-ScriptAnalyzer -Path .\install.ps1 -Severity Error
+          $issues | Format-Table -AutoSize
+          if ($issues) { exit 1 }
+          Write-Host "No analyzer errors."
+
+  # ---------------------------------------------------------------------------
+  # 1b) Validate the no-winget Git download path (the fresh-Win10 code path):
+  #     the GitHub API must yield a real, downloadable 64-bit Git installer.
+  # ---------------------------------------------------------------------------
+  verify-git-url:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Resolve and HEAD-check the Git installer URL
+        shell: powershell
+        run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          $rel = Invoke-RestMethod -Uri 'https://api.github.com/repos/git-for-windows/git/releases/latest' `
+                    -UseBasicParsing -Headers @{ 'User-Agent' = 'claude-code-windows-installer' }
+          $asset = $rel.assets | Where-Object { $_.name -match '^Git-.*-64-bit\.exe$' } | Select-Object -First 1
+          if (-not $asset) { Write-Error "No 64-bit Git installer asset found"; exit 1 }
+          Write-Host "Resolved asset: $($asset.name)"
+          $code = (Invoke-WebRequest -Uri $asset.browser_download_url -Method Head -UseBasicParsing).StatusCode
+          if ($code -ne 200) { Write-Error "Git URL not reachable (HTTP $code)"; exit 1 }
+          Write-Host "OK - Git installer URL is valid and reachable (HTTP 200)."
+
+  # ---------------------------------------------------------------------------
+  # 2) Run the installer from the checked-out file and verify claude works
+  # ---------------------------------------------------------------------------
+  install-from-file:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run install.ps1
+        shell: powershell
+        run: .\install.ps1 -NoLaunch
+
+      - name: Verify 'claude' is on the PERSISTED PATH (simulates a fresh window)
+        shell: powershell
+        run: |
+          # Rebuild PATH the way a brand-new terminal would: Machine + User
+          # registry values only. No manual fix-ups - this proves the installer
+          # actually persisted claude's folder to the User PATH.
+          $machine = [Environment]::GetEnvironmentVariable('Path','Machine')
+          $user    = [Environment]::GetEnvironmentVariable('Path','User')
+          $env:Path = "$machine;$user"
+          $claude = Get-Command claude -ErrorAction SilentlyContinue
+          if (-not $claude) { Write-Error "claude NOT on persisted PATH - a new window would fail"; exit 1 }
+          claude --version
+          if ($LASTEXITCODE -ne 0) { Write-Error "claude --version failed"; exit 1 }
+          Write-Host "OK - claude is on the persisted PATH and runs."
+
+  # ---------------------------------------------------------------------------
+  # 3) Run the EXACT public one-liner users paste, end to end
+  # ---------------------------------------------------------------------------
+  install-from-oneliner:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Run the public one-liner (irm ... | iex)
+        shell: powershell
+        run: |
+          & ([scriptblock]::Create((irm https://raw.githubusercontent.com/OndrejKnedla/claude-code-windows/main/install.ps1))) -NoLaunch
+
+      - name: Verify 'claude' is on the PERSISTED PATH (simulates a fresh window)
+        shell: powershell
+        run: |
+          $machine = [Environment]::GetEnvironmentVariable('Path','Machine')
+          $user    = [Environment]::GetEnvironmentVariable('Path','User')
+          $env:Path = "$machine;$user"
+          $claude = Get-Command claude -ErrorAction SilentlyContinue
+          if (-not $claude) { Write-Error "claude NOT on persisted PATH - a new window would fail"; exit 1 }
+          claude --version
+          if ($LASTEXITCODE -ne 0) { Write-Error "claude --version failed"; exit 1 }
+          Write-Host "OK - claude is on the persisted PATH and runs."

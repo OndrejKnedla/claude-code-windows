@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Cascadia Code, Consolas, Menlo, monospace" font-size="15">
+  <style>
+    .l { opacity: 0; animation: fade .35s ease forwards; }
+    @keyframes fade { to { opacity: 1; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    .cursor { animation: blink 1s step-end infinite; }
+  </style>
+
+  <!-- window -->
+  <rect x="1" y="1" width="758" height="398" rx="10" fill="#0c0c0c" stroke="#2b2b2b"/>
+  <rect x="1" y="1" width="758" height="34" rx="10" fill="#1b1b1b"/>
+  <rect x="1" y="22" width="758" height="13" fill="#1b1b1b"/>
+  <circle cx="22" cy="18" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="18" r="6" fill="#ffbd2e"/>
+  <circle cx="62" cy="18" r="6" fill="#27c93f"/>
+  <text x="380" y="23" fill="#9a9a9a" font-size="13" text-anchor="middle">Windows PowerShell (Admin)</text>
+
+  <!-- body -->
+  <g>
+    <text class="l" style="animation-delay:.2s"  x="24" y="70"  fill="#dcdcdc">PS C:\&gt; <tspan fill="#57c7ff">irm https://raw.githubusercontent.com/.../install.ps1 | iex</tspan></text>
+
+    <text class="l" style="animation-delay:1.0s" x="24" y="108" fill="#d670d6">  Claude Code  -  Windows 1-Click Installer  by OK</text>
+
+    <text class="l" style="animation-delay:1.7s" x="24" y="140" fill="#23d18b">  [OK] ExecutionPolicy set to RemoteSigned</text>
+    <text class="l" style="animation-delay:2.3s" x="24" y="166" fill="#23d18b">  [OK] Git installed: git version 2.54.0</text>
+    <text class="l" style="animation-delay:2.9s" x="24" y="192" fill="#23d18b">  [OK] Claude Code installed (native).</text>
+    <text class="l" style="animation-delay:3.5s" x="24" y="218" fill="#23d18b">  [OK] Added to PATH permanently</text>
+    <text class="l" style="animation-delay:4.1s" x="24" y="244" fill="#23d18b">  [OK] Claude Code is working: 1.0.x</text>
+
+    <text class="l" style="animation-delay:4.9s" x="24" y="284" fill="#23d18b" font-weight="bold">  ===  Installation complete  ===</text>
+
+    <text class="l" style="animation-delay:5.6s" x="24" y="324" fill="#dcdcdc">PS C:\&gt; claude<tspan class="cursor" fill="#dcdcdc" dx="4">&#9608;</tspan></text>
+  </g>
+</svg>
